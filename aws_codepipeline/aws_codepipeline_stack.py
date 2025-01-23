@@ -25,13 +25,15 @@ class AwsCodepipelineStack(Stack):
         git_input = pipelines.CodePipelineSource.connection(
             repo_string="HarshCT298/aws-codepipeline",
             branch="master",
-            connection_arn="arn:aws:codeconnections:eu-west-3:171426237981:connection/b87dae03-4848-43dd-a25c-f19f8ff75261"
+            connection_arn="arn:aws:codeconnections:eu-west-3:171426237981:connection/b87dae03-4848-43dd-a25c-f19f8ff75261",
+            trigger_on_push=True
         )
 
         code_pipeline = codepipeline.Pipeline(
             self, "Pipeline",
             pipeline_name="new-pipeline",
-            cross_account_keys=False
+            cross_account_keys=False,
+            restart_execution_on_update=True
         )
 
         synth_step = pipelines.ShellStep(
