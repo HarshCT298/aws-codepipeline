@@ -24,7 +24,7 @@ class AwsCodepipelineStack(Stack):
 
         git_input = pipelines.CodePipelineSource.connection(
             repo_string="HarshCT298/aws-codepipeline",
-            branch="main",
+            branch="master",
             connection_arn="arn:aws:codeconnections:eu-west-3:171426237981:connection/b87dae03-4848-43dd-a25c-f19f8ff75261"
         )
 
